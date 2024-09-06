@@ -39,7 +39,7 @@ test('Slip Test', () =>{
 })
 
 test('Has Jokers', () =>{
-    const deck = new Deck(hasJokers)
+    const deck = new Deck(true)
     expect(deck.deck.length).toBe(54)
 })
 

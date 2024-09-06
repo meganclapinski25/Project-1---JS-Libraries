@@ -18,8 +18,8 @@ class Deck {
             }
         }
         if (hasJokers){
-            this.cards.push(new Card(null, 'Joker'));
-            this.cards.push(new Card(null, 'Joker'));
+            this.deck.push({suit: null, value: 'Joker'})
+            this.deck.push({suit: null, value: 'Joker'})
         }
     }
     //using shift method .shift()
