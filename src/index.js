@@ -1,13 +1,22 @@
 class Card {
-    constructor(suit,value, color){
+    constructor(suit,value, color, aceIsEleven = false){
         this.suit = suit;
         this.value = value;
         this.color = color;
-        
+        this.aceIsEleven = aceIsEleven;
     }
-    initialize(){
+      toString(){
+        return `${this.value} of ${this.suit}`;
+      }
+
+      toValue(){
         
-   }
+      }
+
+      toEmoji(){
+
+      }
+   
 }
 
 
