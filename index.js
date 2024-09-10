@@ -1,20 +1,33 @@
 class Card {
-    constructor(suit,value, color, aceIsEleven = false){
+    constructor(suit,value, color, aceIsEleven = true){
         this.suit = suit;
         this.value = value;
         this.color = color;
         this.aceIsEleven = aceIsEleven;
     }
+        
       toString(){
-        return `${this.value} of ${this.suit}`;
+        return `A ${this.color} ${this.value} of ${this.suit}`;
       }
 
       toValue(){
-        
-      }
+        if (this.value === 'Ace') {
+            return this.aceIsEleven ? 11 : 1; 
+          } else if (['King', 'Queen', 'Jack'].includes(this.value)) {
+            return 10;
+          } else {
+            return parseInt(this.value, 10);
+          }
+        }
 
       toEmoji(){
-
+        const emojis ={
+           Hearts: '♥️',
+           Diamonds: '♦️',
+           Spades: '♠️',
+           Clubs: '♣️'
+        }
+        return `${this.value} ${emojis[this.suit]}` 
       }
    
 }

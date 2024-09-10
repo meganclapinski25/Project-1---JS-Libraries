@@ -1,4 +1,4 @@
-const {Deck, Card} = require('./index');
+const {Deck, Card} = require('../src/index');
 
 //wokring (with no jokers added )
 test('First Test',() =>  {
@@ -65,3 +65,24 @@ test('Reveal', () =>{
     expect(deck.reveal()).toEqual(revealCard);
     
 })
+
+test('toValue test', () =>{
+    const ace = new Card ('Hearts', 'Ace', 'Black', false);
+    expect(ace.toValue()).toBe(1); 
+ })
+ 
+ test('toString test', ()=>{
+     const card = new Card ('Spades', '5', 'Black')
+     expected = "A Black 5 of Spades";
+     expect(card.toString()).toBe(expected) 
+ })
+ test('toValue test King', () =>{
+     const ace = new Card ('Hearts', 'King', 'Black', false);
+     expect(ace.toValue()).toBe(10); 
+  })
+ 
+  test('toEmoji test', ()=>{
+     const card = new Card ('Hearts', 'Queen', 'Black', false);
+     emojiTest = 'Queen ♥️'
+     expect(card.toEmoji()).toEqual(emojiTest)
+  })
