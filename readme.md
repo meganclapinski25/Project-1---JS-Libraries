@@ -1,0 +1,1 @@
+A JS Library that creates a deck of cards for the user, it has 11 different methods and 2 classes, bot hfro Card and Deck.
