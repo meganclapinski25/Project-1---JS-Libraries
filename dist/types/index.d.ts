@@ -14,12 +14,12 @@ declare class Deck {
     deck: Card[];
     discardPile: Card[];
     constructor(hasJokers?: boolean);
-    initialize(hasJokers: boolean): void;
-    draw(): () => Card | undefined;
-    discard(): (card: Card) => void;
-    addCard(card: () => Card | undefined): (card: Card) => void;
-    slipCard(): (card: Card) => void;
-    shuffle(): () => void;
-    shuffleCard(): (card: Card) => void;
-    reveal(): () => Card | undefined;
+    initialize(): void;
+    draw(): Card | undefined;
+    discard(card: Card): void;
+    addCard(card: Card): void;
+    slipCard(card: Card): void;
+    shuffle(): void;
+    shuffleCard(card: Card): void;
+    reveal(): Card | undefined;
 }

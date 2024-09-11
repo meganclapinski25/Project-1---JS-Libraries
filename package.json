@@ -2,7 +2,7 @@
   "name": "project-1---js-libraries",
   "version": "1.0.0",
   "description": "A Js Library for a deck of cards",
-  "main": "dist/bundle.umd.js",
+  "main": "dist/index.ts",
   "module": "dist/bundle.esm.js",
   "types": "dist/types/index.d.ts",
   "type": "module",

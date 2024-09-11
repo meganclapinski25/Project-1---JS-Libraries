@@ -1,4 +1,4 @@
-const {Deck, Card} = require('../dist/bundle.umd');
+const {Deck, Card} = require('../src/index.js');
 
 //wokring (with no jokers added )
 test('First Test',() =>  {

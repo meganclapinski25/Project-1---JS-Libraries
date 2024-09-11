@@ -25,7 +25,7 @@ var Card = /** @class */ (function () {
             Hearts: '♥️',
             Diamonds: '♦️',
             Spades: '♠️',
-            Clubs: '♣️'
+            Clubs: '♣️',
         };
         return "".concat(this.value, " ").concat(emojis[this.suit]);
     };
@@ -34,24 +34,23 @@ var Card = /** @class */ (function () {
 var Deck = /** @class */ (function () {
     function Deck(hasJokers) {
         if (hasJokers === void 0) { hasJokers = false; }
-        this.suits = ['Diamonds', ' Hearts', 'Clubs', 'Spades'];
-        this.values = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', ' King'];
+        this.suits = ['Diamonds', 'Hearts', 'Clubs', 'Spades'];
+        this.values = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King'];
         this.deck = [];
         this.discardPile = [];
-        this.initialize(hasJokers);
-        if (hasJokers = true) {
-            this.deck.push(new Card('null', 'Joker', 'black'));
-            this.deck.push(new Card('null', 'Joker', 'black'));
+        this.initialize();
+        if (hasJokers) {
+            this.deck.push(new Card('null', 'Joker', 'Black'));
+            this.deck.push(new Card('null', 'Joker', 'Red'));
         }
     }
-    //initialize Deck
-    Deck.prototype.initialize = function (hasJokers) {
-        this.deck = [];
+    // Initialize the deck
+    Deck.prototype.initialize = function () {
         var colors = {
-            'Diamonds': 'Red',
-            'Hearts': 'Red',
-            'Clubs': 'Black',
-            'Spades': 'Black',
+            Diamonds: 'Red',
+            Hearts: 'Red',
+            Clubs: 'Black',
+            Spades: 'Black',
         };
         for (var _i = 0, _a = this.suits; _i < _a.length; _i++) {
             var suit = _a[_i];
@@ -61,46 +60,39 @@ var Deck = /** @class */ (function () {
             }
         }
     };
-    //using shift method .shift()
+    // Draw a card from the top of the deck
     Deck.prototype.draw = function () {
-        var _this = this;
-        return function () { return _this.deck.shift(); };
+        return this.deck.shift();
     };
-    Deck.prototype.discard = function () {
-        var _this = this;
-        return function (card) { return _this.discardPile.push(card); };
+    // Discard a card to the discard pile
+    Deck.prototype.discard = function (card) {
+        this.discardPile.push(card);
     };
+    // Add a card to the top of the deck
     Deck.prototype.addCard = function (card) {
-        var _this = this;
-        return function (card) { return _this.deck.unshift(card); };
+        this.deck.unshift(card);
     };
-    Deck.prototype.slipCard = function () {
-        var _this = this;
-        return function (card) { return _this.deck.push(card); };
+    // Slip a card to the bottom of the deck
+    Deck.prototype.slipCard = function (card) {
+        this.deck.push(card);
     };
+    // Shuffle the deck using a random algorithm
     Deck.prototype.shuffle = function () {
-        var _this = this;
-        return function () {
-            for (var i = 0; i < _this.deck.length; i++) {
-                var shuffle = Math.floor(Math.random() * (_this.deck.length));
-                //for loop the deck, swithces current index of card with randomized card 
-                var temp = _this.deck[i];
-                _this.deck[i] = _this.deck[shuffle];
-                _this.deck[shuffle] = temp;
-            }
-        };
+        for (var i = 0; i < this.deck.length; i++) {
+            var shuffleIndex = Math.floor(Math.random() * this.deck.length);
+            var temp = this.deck[i];
+            this.deck[i] = this.deck[shuffleIndex];
+            this.deck[shuffleIndex] = temp;
+        }
     };
-    Deck.prototype.shuffleCard = function () {
-        var _this = this;
-        return function () {
-            var card = _this.draw();
-            _this.addCard(card);
-            _this.shuffle();
-        };
+    // Shuffle a specific card into the deck
+    Deck.prototype.shuffleCard = function (card) {
+        this.addCard(card);
+        this.shuffle();
     };
+    // Reveal the top card of the deck without drawing
     Deck.prototype.reveal = function () {
-        var _this = this;
-        return function () { return _this.deck[0]; };
+        return this.deck[0];
     };
     return Deck;
 }());

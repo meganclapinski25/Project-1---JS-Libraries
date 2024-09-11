@@ -8,7 +8,7 @@ export default {
     {
       file: 'dist/bundle.umd.js',
       format: 'umd', // Universal Module Definition
-      name: 'DeckofCards', // Global name in UMD builds
+      name: 'MyLibrary', // Global name in UMD builds
       sourcemap: true,
     },
     {
