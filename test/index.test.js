@@ -1,4 +1,5 @@
-const {Deck, Card} = require('../src/index.js');
+import { Deck, Card } from '../src/index';
+
 
 //wokring (with no jokers added )
 test('First Test',() =>  {

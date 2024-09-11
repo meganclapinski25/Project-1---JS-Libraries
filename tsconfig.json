@@ -1,14 +1,14 @@
 {
-    "compilerOptions": {
-      "target": "es5",
-      "module": "esnext",
-      "declaration": true,
-      "declarationDir": "dist/types",
-      "outDir": "dist",
-      "strict": true,
-      "esModuleInterop": true,
-      "moduleResolution": "node"
-    },
-    "include": ["src"],
-    "exclude": ["node_modules", "dist"]
-  }
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  },
+  "include": ["src", "test/index.test.js"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.js"] // Exclude test files from bundling
+}
