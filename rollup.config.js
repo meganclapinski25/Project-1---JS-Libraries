@@ -3,19 +3,26 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
 export default {
-  input: 'src/index.ts',
-  output: {
-    file: production ? 'dist/my-library.min.js' : 'dist/my-library.js',
-    format: 'umd',
-    name: 'MyLibrary',
-    sourcemap: true,
-    },  
+  input: 'src/index.ts', // Entry point
+  output: [
+    {
+      file: 'dist/bundle.umd.js',
+      format: 'umd', // Universal Module Definition
+      name: 'MyLibrary', // Global name in UMD builds
+      sourcemap: true,
+    },
+    {
+      file: 'dist/bundle.esm.js',
+      format: 'es', // ESM format
+      sourcemap: true,
+    }
+  ],
   plugins: [
-    resolve(),                      // Resolves modules from node_modules
-    commonjs(),                     // Converts CommonJS modules to ES6
-    typescript({                    // TypeScript compilation
-      tsconfig: './tsconfig.json',
-      useTsconfigDeclarationDir: true // Use the declaration directory specified in tsconfig.json
-    })
+    resolve(), // To resolve node_modules
+    commonjs(), // To convert CommonJS modules to ES6
+    typescript({
+      tsconfig: "./tsconfig.json",
+      useTsconfigDeclarationDir: true, // Output .d.ts files to the specified folder
+    }),
   ]
 };

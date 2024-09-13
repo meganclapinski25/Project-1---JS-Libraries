@@ -5,8 +5,8 @@ declare class Card {
     aceIsEleven: boolean;
     constructor(suit: string, value: string, color: string, aceIsEleven?: boolean);
     toString(): string;
-    toValue(): number;
     toEmoji(): string;
+    toValue(): number;
 }
 declare class Deck {
     suits: string[];
@@ -23,3 +23,4 @@ declare class Deck {
     shuffleCard(card: Card): void;
     reveal(): Card | undefined;
 }
+export { Deck, Card };

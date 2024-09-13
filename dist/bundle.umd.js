@@ -1,7 +1,8 @@
-(function (factory) {
-  typeof define === 'function' && define.amd ? define(factory) :
-  factory();
-})((function () { 'use strict';
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.MyLibrary = {}));
+})(this, (function (exports) { 'use strict';
 
   var Card = /** @class */ (function () {
       function Card(suit, value, color, aceIsEleven) {
@@ -14,6 +15,15 @@
       Card.prototype.toString = function () {
           return "A ".concat(this.color, " ").concat(this.value, " of ").concat(this.suit);
       };
+      Card.prototype.toEmoji = function () {
+          var emojis = {
+              Hearts: '♥️',
+              Diamonds: '♦️',
+              Spades: '♠️',
+              Clubs: '♣️',
+          };
+          return "".concat(this.value, " ").concat(emojis[this.suit]);
+      };
       Card.prototype.toValue = function () {
           if (this.value === 'Ace') {
               return this.aceIsEleven ? 11 : 1;
@@ -24,15 +34,6 @@
           else {
               return parseInt(this.value, 10);
           }
-      };
-      Card.prototype.toEmoji = function () {
-          var emojis = {
-              Hearts: '♥️',
-              Diamonds: '♦️',
-              Spades: '♠️',
-              Clubs: '♣️',
-          };
-          return "".concat(this.value, " ").concat(emojis[this.suit]);
       };
       return Card;
   }());
@@ -101,8 +102,9 @@
       };
       return Deck;
   }());
-  module.exports.Deck = Deck;
-  module.exports.Card = Card;
+
+  exports.Card = Card;
+  exports.Deck = Deck;
 
 }));
 //# sourceMappingURL=bundle.umd.js.map

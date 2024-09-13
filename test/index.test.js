@@ -1,5 +1,6 @@
 // import Card , Deck 
-import { Deck, Card } from '../src/index';
+//import { Deck, Card } from '../dist/bundle.esm.js';
+const {Deck, Card} = require ('../dist/bundle.umd.js')
 
 
 // working w/ index.js 
@@ -31,7 +32,7 @@ test('Add Test', () =>{
     const deck = new Deck()
     
     deck.addCard();
-    expect(deck.deck.length).toBe(52)
+    expect(deck.deck.length).toBe(53)
     
     
 })
@@ -55,9 +56,13 @@ test('Shuffled Card Test', ()  => {
 // working w/ index.js 
 test('Shuffled Deck', () =>{
     const deck = new Deck();
-    const shuffledDeck = new Deck();
-    shuffledDeck.shuffle();
-    expect(deck.deck).not.toEqual(shuffledDeck)
+    const tempCard = deck.draw();
+    deck.shuffleCard(tempCard);
+
+    expect(deck.deck).toContain(tempCard);
+
+
+
 })
 // working w/ index.js 
 test('Reveal', () =>{

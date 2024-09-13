@@ -15,16 +15,6 @@ class Card {
       return `A ${this.color} ${this.value} of ${this.suit}`;
   }
 
-  toValue(): number {
-      if (this.value === 'Ace') {
-          return this.aceIsEleven ? 11 : 1;
-      } else if (['King', 'Queen', 'Jack'].includes(this.value)) {
-          return 10;
-      } else {
-          return parseInt(this.value, 10);
-      }
-  }
-
   toEmoji(): string {
       const emojis: Record<string, string> = {
           Hearts: '♥️',
@@ -34,6 +24,15 @@ class Card {
       };
       return `${this.value} ${emojis[this.suit]}`;
   }
+  toValue(): number {
+    if (this.value === 'Ace') {
+        return this.aceIsEleven ? 11 : 1;
+    } else if (['King', 'Queen', 'Jack'].includes(this.value)) {
+        return 10;
+    } else {
+        return parseInt(this.value, 10);
+    }
+}
 }
 
 
@@ -116,4 +115,4 @@ class Deck {
     }
 }
 
-module.exports = { Deck, Card };
+export {Deck, Card}

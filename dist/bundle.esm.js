@@ -9,6 +9,15 @@ var Card = /** @class */ (function () {
     Card.prototype.toString = function () {
         return "A ".concat(this.color, " ").concat(this.value, " of ").concat(this.suit);
     };
+    Card.prototype.toEmoji = function () {
+        var emojis = {
+            Hearts: '♥️',
+            Diamonds: '♦️',
+            Spades: '♠️',
+            Clubs: '♣️',
+        };
+        return "".concat(this.value, " ").concat(emojis[this.suit]);
+    };
     Card.prototype.toValue = function () {
         if (this.value === 'Ace') {
             return this.aceIsEleven ? 11 : 1;
@@ -19,15 +28,6 @@ var Card = /** @class */ (function () {
         else {
             return parseInt(this.value, 10);
         }
-    };
-    Card.prototype.toEmoji = function () {
-        var emojis = {
-            Hearts: '♥️',
-            Diamonds: '♦️',
-            Spades: '♠️',
-            Clubs: '♣️',
-        };
-        return "".concat(this.value, " ").concat(emojis[this.suit]);
     };
     return Card;
 }());
@@ -96,6 +96,6 @@ var Deck = /** @class */ (function () {
     };
     return Deck;
 }());
-module.exports.Deck = Deck;
-module.exports.Card = Card;
+
+export { Card, Deck };
 //# sourceMappingURL=bundle.esm.js.map
