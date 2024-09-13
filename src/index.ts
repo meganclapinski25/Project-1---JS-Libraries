@@ -116,5 +116,4 @@ class Deck {
     }
 }
 
-module.exports.Deck = Deck;
-module.exports.Card = Card;
+module.exports = { Deck, Card };

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES5",
     "module": "esnext",
     "declaration": true,
     "declarationDir": "dist/types",
@@ -10,5 +10,5 @@
     "moduleResolution": "node"
   },
   "include": ["src", "test/index.test.js"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.test.js"] // Exclude test files from bundling
+  "exclude": ["node_modules", "dist"]
 }

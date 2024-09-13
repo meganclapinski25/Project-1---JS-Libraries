@@ -1,31 +1,32 @@
+// import Card , Deck 
 import { Deck, Card } from '../src/index';
 
 
-//wokring (with no jokers added )
+// working w/ index.js 
 test('First Test',() =>  {
    const deck = new Deck()
     expect(deck.deck.length).toBe(52)
 })
-//working (with jokers added)
+// working w/ index.js 
 test('Joker Test', () =>{
     const deck = new Deck(true)
     expect(deck.deck.length).toBe(54)
 })
 
-//working
+// working w/ index.js 
 test('Draw Test', () =>{
     const deck = new Deck()
     deck.draw();
     expect(deck.deck.length).toBe(51)
 })
-//working
+// working w/ index.js 
 test('Discard Test', () => {
     const deck = new Deck()
     deck.discard();
     expect(deck.discardPile.length).toBe(1)
 })
 
-// don't know if this is testing the right thing ( test placement) working 
+// working w/ index.js 
 test('Add Test', () =>{
     const deck = new Deck()
     
@@ -34,7 +35,7 @@ test('Add Test', () =>{
     
     
 })
-//check test again after finishing shuffle (check placement)
+// working w/ index.js 
 test('Slip Test', () =>{
     const deck = new Deck()
     const tempCard = deck.draw();
@@ -44,21 +45,21 @@ test('Slip Test', () =>{
     
     
 })
-
+// working w/ index.js 
 test('Shuffled Card Test', ()  => {
     const deck = new Deck()
     const newCard = deck.draw();
     deck.shuffleCard(newCard)
     expect(deck.deck[0]).not.toEqual(newCard);
 })
-
+// working w/ index.js 
 test('Shuffled Deck', () =>{
     const deck = new Deck();
     const shuffledDeck = new Deck();
     shuffledDeck.shuffle();
     expect(deck.deck).not.toEqual(shuffledDeck)
 })
-
+// working w/ index.js 
 test('Reveal', () =>{
     const deck  = new Deck ()
     const tempDeck = new Deck()
