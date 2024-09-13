@@ -1,29 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script src="bundle.umd.js">
-
-            const jokerDeck = new Deck(true)
-            const newDeck = new Deck(false)
-            document.getElementById('test').addEventListener('click', () => {
-                console.log('Initial Deck:', deck.deck.length); 
-
-                const drawnCard = deck.draw();
-                console.log('Drawn Card:', drawnCard ? drawnCard.toString() + ' ' + drawnCard.toEmoji() : 'No card drawn');
-
-                deck.addCard(newCard);
-                console.log('Added Card:', newCard.toString() + ' ' + newCard.toEmoji());
-
-                const topCard = deck.reveal();
-                console.log('Top Card:', topCard ? topCard.toString() + ' ' + topCard.toEmoji() : 'No top card');
-
-                
-            });
-        </script>
+        <script src="dist/bundle.umd.js"></script>
         
+            <body>
+                <button id="test">Run Test</button>
+                <script >
+                    document.getElementById('test').addEventListener('click', () => {
+                        // Make sure Deck is defined and accessible
+                        const Deck = MyLibrary.Deck;
+                        const Card = MyLibrary.Card;
+                        const card1 = new MyLibrary.Card('Hearts', '10', 'Red');
+                        const jokerDeck = new Deck(true);
+                        const newDeck = new Deck(false);   
+                        
+                        
+                        console.log('Initial Deck w/ Jokers:', jokerDeck.deck.length);
+                        console.log('Initial Deck:', newDeck.deck.length);
+            
+                        const drawnCard = newDeck.draw();
+                        console.log('Draw Card:',  drawnCard.toString() + ' ' + drawnCard.toEmoji());
+            
+                        jokerDeck.addCard(card1);
+                        console.log('Added Card to Top:', card1.toString() + ' ' + card1.toEmoji());
+            
+                        const topCard = jokerDeck.reveal();
+                        console.log('Top Card:', topCard ? topCard.toString() + ' ' + topCard.toEmoji() : 'No top card');
+
+                        const shuffleDeck = new Deck(false)
+                        console.log(shuffleDeck.shuffle())
+                        console.log(shuffleDeck.draw())
+                        
+                        
+                        
+                    });
+                </script>
+            </body>
+           
     </head>
     
-    <body>
-        <button id="test">Run Test</button>
-    </body>
+   
 </html>
