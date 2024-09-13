@@ -42,6 +42,7 @@ class Deck {
     values: string[];
     deck: Card[];
     discardPile: Card[];
+    
 
     constructor(hasJokers: boolean = false) {
         this.suits = ['Diamonds', 'Hearts', 'Clubs', 'Spades'];

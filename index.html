@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script src = "dist/bundle.umd.js"> </script>
-    console.log(DeckofCards)
+    <head>
+        <script src="bundle.umd.js">
 
-</body>
+            const jokerDeck = new Deck(true)
+            const newDeck = new Deck(false)
+            document.getElementById('test').addEventListener('click', () => {
+                console.log('Initial Deck:', deck.deck.length); 
+
+                const drawnCard = deck.draw();
+                console.log('Drawn Card:', drawnCard ? drawnCard.toString() + ' ' + drawnCard.toEmoji() : 'No card drawn');
+
+                deck.addCard(newCard);
+                console.log('Added Card:', newCard.toString() + ' ' + newCard.toEmoji());
+
+                const topCard = deck.reveal();
+                console.log('Top Card:', topCard ? topCard.toString() + ' ' + topCard.toEmoji() : 'No top card');
+
+                
+            });
+        </script>
+        
+    </head>
+    
+    <body>
+        <button id="test">Run Test</button>
+    </body>
 </html>
